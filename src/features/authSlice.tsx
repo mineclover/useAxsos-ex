@@ -49,10 +49,13 @@ export const authSlice = createSlice({
       state.joinType = 0;
       state.accessToken = "";
     },
+    tokenRefresh: (state, action: PayloadAction<AuthState>) => {
+      state.accessToken = action.payload.accessToken;
+    },
   },
 });
 
-export const { loginAction, logoutAction } = authSlice.actions;
+export const { loginAction, logoutAction, tokenRefresh } = authSlice.actions;
 
 export const selectAccessToken = (state: RootState) => state.auth.accessToken;
 export const selectuserInfo = (state: RootState) => state.auth;

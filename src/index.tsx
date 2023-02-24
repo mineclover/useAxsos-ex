@@ -3,6 +3,7 @@ import { Provider } from "react-redux";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { PersistGate } from "redux-persist/integration/react";
+import { AxiosInterceptor } from "api/api";
 import store, { persistor } from "./app/store";
 import App from "./App";
 
@@ -15,7 +16,9 @@ root.render(
   <Provider store={store}>
     <PersistGate persistor={persistor}>
       <QueryClientProvider client={queryClient}>
-        <App />
+        <AxiosInterceptor>
+          <App />
+        </AxiosInterceptor>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </PersistGate>

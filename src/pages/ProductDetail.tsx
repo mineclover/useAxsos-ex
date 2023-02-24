@@ -49,7 +49,7 @@ const ProductDetail = () => {
   console.log(detail?.productId);
   const queryClient = useQueryClient();
 
-  const likeMutation = useMutation((id: string) => postLikeLists(id), {
+  const likeMutation = useMutation((postId: string) => postLikeLists(postId), {
     onSuccess(data) {
       console.log(data.success);
       queryClient.invalidateQueries(["like"]);
